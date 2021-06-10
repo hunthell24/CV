@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bs/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bs/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Add new CV</title>
+</head>
+<script type="text/javascript">
+function addFields(){
+            var Number = 1;
+            const SchoolTitle = document.querySelector(".schoolTitle");
+            const EducationF = document.querySelector("#education_f");
+            const Container = document.querySelector("#educationInputs");
+            for (i=0;i<number;i++){
+                var Count = container.getElementsByClassName('CV_item_inputs').length;
+                var FieldName;
+                var Title = document.createElement('h4');
+                TitleValue = document.createTextNode("School");
+                Title.id = 'SchoolTitle'+count;
+                Title.appendChild(titleValue);
+                var Input = document.createElement("input");
+                Input.type = "text";
+                FieldName = "newEducation"+count;
+                Input.id = fieldName;
+                Input.name = fieldName;
+                Input.placeholder = "Add schools name";
+                Input.size = "35";
+                
+                var Inputs = document.createElement('h4');
+                TitleValue = document.createTextNode("Year");
+                Titles.id = 'schoolTitleYear'+count;
+                Titles.appendChild(titleValue);
+                var Inputs = document.createElement("input");
+                Inputs.type = "text";
+                FieldName = "newEducationYear"+count;
+                Inputs.id = fieldName;
+                Inputs.name = fieldName;
+                Inputs.placeholder = "From ... to ... (2021 - ...)";
+
+                var Item = document.createElement('div');
+                Item.className = "CV_item_inputs";
+                Item.appendChild(Title);
+                Item.appendChild(Inputs);
+                Item.appendChild(Titles);
+                Item.appendChild(Inputs);
+                var Education_class = document.createElement('div');
+                Education_class.className = "EDUCATION_CLASS";
+                Education_class.appendChild(Item);
+                Container.appendChild(Education_class);
+                Container.appendChild(document.createElement("br"));
+            }
+        }
+        function onSubmit(){
+            const Parent = document.getElementById('educationInputs');
+            const Child = Parent.getElementsByClassName("EDUCATION_CLASS");
+            console.log("Submit length: "+Child.length);
+            var Data = [];
+            for (i=0;i<Child.length;i++) {
+                var MyObjective = document.querySelector('#newEducation'+i);
+                console.log("VALUE: "+MyObjective.value);
+                if (i < Child.length-1) Data += (MyObjective.value + ",");
+                else Data += (MyObjective.value);
+            };
+            console.log(Data);
+            const Final = document.querySelector('#INPUTS0');
+            Final.value = Data;
+            document.querySelector('#form0').submit();
+        }
+
+</script>
+<body>
+    <div class="container">
+        <div class="header" id="heading" >
+            <h1>New CV</h1>
+        </div>
+    </div>
+
+    <div class="CV">
+        <form action="/create-document" method="POST" id="from">
+        <h1>Details</h1>
+        <div class="input">
+            <h3 id="FirstName">First name</h3>
+            <div class="CV_Items">
+                <input id="First_Name" type="text" name="First" placeholder="Add first name" value="" required="true">
+            </div>
+
+            <h3 id="LastName">Last name</h3>
+            <div class="CV_Items">
+                <input id="Last_Name" type="text" name="newLast" placeholder="Add last name" value="" required="true">
+            </div>
+        </div>
+
+        <h1>Objective</h1>
+                <div class="inputs">
+                    <div class="CV_Items">
+                        <input id="Objective" type="text" name="newObjective" placeholder="Add objective" value="" required="true">
+                    </div>
+                </div>
+
+                <h1>Education</h1>
+                <div class="inputs">
+                    <div id="EducationInput" >
+                    
+                    </div>
+                    <input type="text" name="EducationInputs" id="INPUT">
+                </div>
+                <button type="button" class="btn-primary" onclick="addFields();">Add</button>
+        </form>
+        <button class="btn-primary" onclick="onSubmit();">Submit form</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bs/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bs/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>CV</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header" id="heading">
+            <h1>CV</h1>
+            <hr>
+        </div>
+
+        <% for(let i=0; i < Items.lenght; i++){ %>
+          <div class="CV">
+              <h1>Deltails</h1>
+
+              <h1>First name</h1>
+              <div class="CV_Item">
+                  <h2>First name</h2>
+                  <p><%= Items[i].First_Name</p>
+              </div>
+              <h1>Last name</h1>
+              <div class="CV_item">
+                  <h2>Last Name</h2>
+                  <p><%= Items[i].Last_Name</p>
+              </div>
+              <h1>Objective</h1>
+              <div class="CV_item">
+                <h2>Last Name</h2>
+                <p><%= Items[i].Objective</p>
+            </div>
+
+            <h1>Education</h1>
+            <div class="CV_Item">
+                <ul class="list-group">
+                    <% for(let i=0; j < Items.lenght; j++){ %>
+                        <li class="list-group-item">
+                            <%= Items[i].Education[j] %>
+                            <%= Items[i].Education_Year[j] %>
+                        </li>
+                        <% } %>
+                </ul>
+            </div>
+            <h1>Computer</h1>
+            <div class="CV_Item">
+                <ul class="list-group">
+                    <% for(let j=0; j < Items[i].Computer_Knowledge.length; j++) { %>
+                        <div class="CV_Items">
+                            <li class="list-group-item">
+                                <%= Items[i].Computer_Knowledge[j] %>
+                            </li>
+                        </div>
+                        <% } %>
+                </ul>
+            </div>
+            <h1>Languages</h1>
+            <div class="CV-Item">
+                <ul class="list-group">
+                    <% for(let j=0; j < Items[i].computer_knowledge.length; j++) { %>
+                        <div class="CV_Items">
+                            <li class="list-group-item">
+                                <%= Items[i].Languages[j]
+                            </li>
+                        </div>
+                        <% } %>
+                </ul>
+            </div>
+          </div>  
+          <% } %>
+    </div>
+</body>
+</html>
